@@ -1,16 +1,19 @@
 @import "~bootstrap/scss/bootstrap.scss";
 
-.App {
-  font-family: sans-serif;
-  text-align: center;
+App {
+  background: black;
 }
 .bodyProject{
-    height: 45rem;
+    height: 50rem;
     width: 45rem;
     background: wheat;
     margin-top: 3rem;
+    //background-image: url("https://images.pexels.com/photos/3243/pen-calendar-to-do-checklist.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940")
 }
 h1{
     padding-top: 1rem;
+    font-style:oblique; 
+    
 }
+
 

@@ -6,13 +6,11 @@ import { Input } from "./Input.jsx";
 export function Home() {
 	return (
 		<div className="d-flex justify-content-center">
-			<div className="bodyProject">
-				<div className="d-flex justify-content-center">
-					<h1>TODOS</h1>
-				</div>
-				<div className="d-flex justify-content-center">
-					<Input />
-				</div>
+			<div className="bodyProject text-center">
+				<h1>
+					<strong>TODOS</strong>
+				</h1>
+				<Input />
 			</div>
 		</div>
 	);

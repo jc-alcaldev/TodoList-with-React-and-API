@@ -40,28 +40,21 @@ export const Input = () => {
 					}}
 				/>
 			</form>
-			<div>
-				<ul>
-					{tasks.map((task, index) => {
-						return (
-							<li key={index}>
-								{task}
-								<IconButton
-									aria-label="Delete"
-									onClick={() => {
-										deleteLine(index);
-									}}>
-									<DeleteIcon />
-								</IconButton>
-							</li>
-						);
-					})}
-				</ul>
-			</div>
+
+			{tasks.map((task, index) => {
+				return (
+					<li key={index}>
+						{task}
+						<IconButton
+							aria-label="Delete"
+							onClick={() => {
+								deleteLine(index);
+							}}>
+							<DeleteIcon />
+						</IconButton>
+					</li>
+				);
+			})}
 		</Fragment>
 	);
-};
-
-Input.propTypes = {
-	saveText: PropTypes.string
 };
