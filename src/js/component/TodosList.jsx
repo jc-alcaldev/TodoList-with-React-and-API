@@ -1,37 +1,58 @@
-import React, { useState } from "react";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
-import ListItemText from "@material-ui/core/ListItemText";
-import Checkbox from "@material-ui/core/Checkbox";
-import IconButton from "@material-ui/core/IconButton";
+import React, { Fragment, useState } from "react";
 import DeleteIcon from "@material-ui/icons/Delete";
-import PropTypes from "prop-types";
+import IconButton from "@material-ui/core/IconButton";
 
-export const TodosList = props => {
+export const TodosList = () => {
+	const [tasks, setTasks] = useState([]);
+	const [initialValue, setInitialValue] = useState(null);
+
+	let newTask = event => {
+		let myInput = document.querySelector("#taskInput");
+		let newTask = event.target.value;
+
+		if (event.keyCode == 13) {
+			event.preventDefault();
+			if (newTask) {
+				setTasks(tasks => [...tasks, newTask]);
+				myInput.value = "";
+			}
+		}
+	};
+
+	let deleteLine = index => {
+		const newTodos = [...tasks];
+		newTodos.splice(index, 1);
+		setTasks(newTodos);
+	};
+
 	return (
-		<List>
-			{props.todos.map((todo, index) => (
-				<ListItem key={index.toString()} dense button>
-					{/* <Checkbox tabIndex={-1} disableRipple /> */}
-					<ListItemText primary={todo} />
-					<ListItemSecondaryAction>
+		<Fragment>
+			<form>
+				<input
+					id="taskInput"
+					type="text"
+					placeholder="Add Task"
+					value={initialValue}
+					onKeyPress={() => {
+						newTask(event);
+					}}
+				/>
+			</form>
+
+			{tasks.map((task, index) => {
+				return (
+					<li key={index}>
+						{task}
 						<IconButton
 							aria-label="Delete"
 							onClick={() => {
-								props.deleteTodos(index);
-								console.log(props.todos);
+								deleteLine(index);
 							}}>
 							<DeleteIcon />
 						</IconButton>
-					</ListItemSecondaryAction>
-				</ListItem>
-			))}
-		</List>
+					</li>
+				);
+			})}
+		</Fragment>
 	);
-};
-
-TodosList.propTypes = {
-	todos: PropTypes.string,
-	deleteTodos: PropTypes.string
 };

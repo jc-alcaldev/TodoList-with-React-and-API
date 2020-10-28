@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 import { TodosList } from "./TodosList.jsx";
-import { Input } from "./Input.jsx";
 
 //create your first component
 export function Home() {
@@ -10,7 +9,7 @@ export function Home() {
 				<h1>
 					<strong>TODOS</strong>
 				</h1>
-				<Input />
+				<TodosList />
 			</div>
 		</div>
 	);
